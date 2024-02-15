@@ -1,0 +1,35 @@
+body {
+    background-color: #f4f4f4;
+    margin: 0 auto;
+    max-width: 1300px;
+    line-height: 1.6;
+    font-family: system-ui;
+    padding: 4em 1em;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.subtitulo {
+    text-align: right;
+}
+
+.pregunta {
+    font-size: 18px;
+    width: 98%;
+    padding: 9px;
+    border-bottom: 1px solid darkblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.respuesta {
+    width: 90%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}
