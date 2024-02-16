@@ -7,6 +7,10 @@ body {
     padding: 4em 1em;
 }
 
+footer {
+    text-align: center;
+}
+
 .titulo {
     text-align: center;
 }
@@ -32,4 +36,8 @@ body {
     cursor: pointer;
     display: flex;
     justify-content: space-between;
+}
+
+a {
+    color: fuchsia;
 }
