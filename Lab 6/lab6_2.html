@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Laboratorio 6 </title>
+        <link rel="stylesheet" type="text/css" href="lab6_2.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+
+    <body>
+
+        <br> <h1 class="titulo"> Jujutsu Kaisen </h1> <br>
+        <p class="titulo"> ¡Escoge ya tus artículos favoritos! </p> <br> <br> <br>
+
+        <div class="contenido">
+            <div class="mostrador">
+                <div class="fila">
+                    <div class="elemento">
+                        <div class="contenedor-imagen">
+                            <img src="SudaderaGojoGeto.png" alt="Sudadera de Gojo y Geto">
+                        </div>
+                        <p class="descripcion"> Sudadera verde de Gojo y Geto (peces beta) </p> <br>
+                        <span> Precio: $ </span> <span class="precio" id="precio1"> 450 </span> <br> <br>
+
+                        <span> Cantidad:  </span> <input type="number" min="0" max="5" id="input_cant_elem1" placeholder="Ingrese cantidad"> 0 </input>
+                    </div>
+    
+                    <div class="elemento">
+                        <div class="contenedor-imagen">
+                            <img src="SudaderaSukuna.png" alt="Sudadera de Sukuna">       
+                        </div>
+                        <p class="descripcion"> Sudadera de Sukuna </p> <br>
+                        <span> Precio: $ </span> <span class="precio" id="precio2"> 350 </span> <br> <br>
+
+                        <span> Cantidad:  </span> <input type="number" min="0" max="5" id="input_cant_elem2" placeholder="Ingrese cantidad"> 0 </input>
+                    </div>
+                </div>
+
+                <div class="fila">
+                    <div class="elemento">
+                        <div class="contenedor-imagen">
+                            <img src="SudaderaItadori.png" alt="Sudadera de Itadori">
+                        </div>
+                        <p class="descripcion"> Sudadera de Itadori </p> <br>
+                        <span> Precio: $ </span> <span class="precio" id="precio3"> 400 </span> <br> <br>
+
+                        <span> Cantidad:  </span> <input type="number" min="0" max="5" id="input_cant_elem3" placeholder="Ingrese cantidad"> 0 </input>
+                    </div>
+
+                    <div class="elemento">
+                        <p> ¿Terminaste tu elección? <br> ¡Calcula tu total a pagar! </p> <br> <br>
+                        <button id="botton_total"> Calcular mi total </button> <br> <br>
+
+                        <p> Total a pagar: $ <span id="total_pagar"> 0 </span> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="lab6_2.js"></script>
+    </body>
+</html>
