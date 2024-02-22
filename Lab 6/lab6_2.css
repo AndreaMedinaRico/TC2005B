@@ -53,3 +53,22 @@ button {
     border-radius: 8px;
     border: 2px solid #ccc;
 }
+
+.pregunta {
+    font-size: 18px;
+    width: 98%;
+    padding: 9px;
+    border-bottom: 1px solid darkblue;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+}
+
+.respuesta {
+    width: 90%;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+}

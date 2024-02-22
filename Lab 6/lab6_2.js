@@ -13,6 +13,7 @@ button_suma1.onclick = () => {
         cant1.innerText = cant_elem1;
         total_pago += precio_elem1;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
     
 }
@@ -26,6 +27,7 @@ button_resta1.onclick = () => {
         cant1.innerText = cant_elem1;
         total_pago -= precio_elem1;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
 }
 
@@ -42,6 +44,7 @@ button_suma2.onclick = () => {
         cant2.innerText = cant_elem2;
         total_pago += precio_elem2;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
 }
 
@@ -54,6 +57,7 @@ button_resta2.onclick = () => {
         cant2.innerText = cant_elem2;
         total_pago -= precio_elem2;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
 }
 
@@ -70,6 +74,7 @@ button_suma3.onclick = () => {
         cant3.innerText = cant_elem3;
         total_pago += precio_elem3;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
 }
 
@@ -82,5 +87,6 @@ button_resta3.onclick = () => {
         cant3.innerText = cant_elem3;
         total_pago -= precio_elem3;
         total_pagar.innerText = total_pago.toString();
+        iva.innerText = (total_pago * 0.16).toString();
     }
 }
