@@ -90,3 +90,17 @@ button_resta3.onclick = () => {
         iva.innerText = (total_pago * 0.16).toString();
     }
 }
+
+const titulo_camb = document.getElementById('titulo_cambio');
+
+titulo_camb.addEventListener('mousemove', function() {
+    titulo_camb.innerText = "¡Los artículos más recientes del mercado!";
+});
+titulo_camb.addEventListener('mouseout', function () {
+    titulo_camb.innerText = "Jujutsu Kaisen";
+});
+
+const info_iva = document.getElementById('info');
+info_iva.ondblclick = () => {
+    alert('El IVA es un impuesto indirecto que grava la venta de bienes y servicios en México');
+}

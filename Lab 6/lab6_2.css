@@ -72,3 +72,20 @@ button {
     display: flex;
     justify-content: space-between;
 }
+
+.subtitulo {
+    font-weight: bold;
+    text-align: center;
+    color: #073723;
+}
+
+.negritas {
+    font-weight: bold;
+}
+
+.info {
+    color: #ce05ed;
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+}
