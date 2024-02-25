@@ -1,0 +1,29 @@
+body {
+    font-family: system-ui;
+    margin: 0 auto;
+    max-width: 1100px;
+    line-height: 1.6;
+}
+
+table, th, td {
+    border: 2px solid rgb(5, 60, 32);
+    width: 50%;
+}
+
+.titulo {
+    text-align: center;
+}
+
+.subtitulo {
+    font-weight: bold;
+}
+
+.pregunta {
+    width: 98%;
+    padding: 9px;
+    border-bottom: 1px solid darkblue;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+}
