@@ -1,42 +1,183 @@
 //fs es el módulo con las funciones para MANIPULAR sistema de archivos
 const filesystem = require('fs');
+
 filesystem.writeFileSync('hola.txt', 'Hola desde node');
 
-const express = require('express');
-const app = express();
+// FUNCIÓN 1. Recibe arreglo de números y devuelve el promedio
+const prom_numeros = (arreglo) => {
+    let acum = 0;
+    let size = arreglo.length;
+    for (let i = 0; i < size; i++) {
+        acum += arreglo[i];
+    }
+    return acum / size;
+}
+arreglo = [10, 20, 30, 40, 50];
+console.log(prom_numeros(arreglo));
 
-const bodyParser = require('body-parser');
-app.use(bodyParser.urlencoded({extended: false}));
+// FUNCIÓN 2. Recibe string y lo escribe en archivo de texto
+const string_a_archivo = (nombre_archivo, string) => {
+    filesystem.writeFileSync(nombre_archivo, string);
+    return "Se creó el archivo y escribió la frase :)";
+}
+console.log(string_a_archivo('hola.txt', 'Hola desde node 2'));
 
-// MIDDLEWARE
-    // Permite hacer cambios a la petición antes de que llegue a su destino
-    // Funciona para toda la aplicación
-app.use((request, response, next) => {
-    console.log('Middleware!');
-    next();                             // Le permite a la petición avanzar hacia el siguiente middleware
-});
+// FUNCIÓN 3. Recibe un número y devuelve el factorial
+const factorial = (numero) => {
+    let acum = 1;
+    for (let i = 1; i <= numero; i++) {
+        acum *= i;
+    }
+    return acum;
+}
+console.log(factorial(5));
 
-app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.send('¡Hola mundo!');      // Manda la respuesta
+const http = require('http');
+// Escrito en paradigma FUNCIONAL
+    // Escucha las peticiones de HTTP en el PUERTO 3000
+    // Puede ser cualquier puerto mientras no esté ocupado
+const server = http.createServer( (request, response) => {
+    console.log(request.url);
+    response.setHeader('Content-Type', 'text/html');        // Navegador se prepara para recibir HTML
 
-    // response.statusCode = 404;       VARIABLE
-    // respone.status(404).send('404'); FUNCIÓN
-});
+    response.write(`<!DOCTYPE html>
 
-app.get('/', (request, response) => {
-
-});
-
-app.post('/crear', (request, response, next) => {
+    <html>
+        <head>
+            <title> Laboratorio #1 </title>
+            <link rel="stylesheet" type="text/css" href="Lab1_css.mini.css">
+        </head>
+         
+        <body>
+            <h1 class="titulo"> Laboratorios #1, #2 y #3 </h1>
+            <h4 class="subtitulo"> Andrea Medina Rico </h4>
+            <h4 class="subtitulo"> A01705541 </h4>
+            <h4 class="subtitulo"> a01705541@tec.mx </h4>
     
-});
+            <h3> <br> Preguntas de Laboratorio #1: HTML </h3>
+           
+            <p class="pregunta"> 1. ¿Cuál es la diferencia entre internet y la World Wide Web? </p>  
+            <p class="respuesta"> El internet es una extensa red de computadoras conectadas entre sí alrededor del mundo. En cambio, 
+                la World Wide Web es un sistema que, a través de internet, nos permite navegar entre páginas con
+                hipervínculos. </p>
+            
+                
+            <p class="pregunta"> 2. ¿Cuáles son las partes de un URL? </p>
+            <list>
+                <li> Protocolo HTTPS: HyperText Transfer Protocol. Transfiere información entre actores dentro de la WWW.
+                    La 'S' hace referencia a la seguridad, pues cifra la información para prevenir daños en caso ser interceptada. </li>
+                <li> Subdominio: Se encuentra entre el protocolo y el dominio. </li>
+                <li> Dominio: Nombre único que identifica a una página web.  </li>
+                <li> TLD: Top Level Domain. Se encuentra al final del dominio. </li>
+                <li> Ruta: Páginas y subpáginas que pueden encontrarse en el sitio </li>
+                <li> Parámetro: Después del signo '?' y separado con '&'. Puede referirse a búsqueda. </li>
+            </list>
+    
+            <p class="pregunta"> 3. ¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST, PUT, PATCH, DELETE? </p>
+            <list>
+                <li> GET: Solicita al servidor una información o representación de un recurso en un formato. </li>
+                <li> HEAD: Solicita sólo información de la cabecera. </li>
+                <li> POST: Para enviar datos al servidor. Ejemplo: Formularios </li>
+                <li> PUT: Similar a post, pero actualiza datos ya existentes en el servidor. </li>
+                <li> PATCH: Similar a Put, pero los datos se modifican de manera parcial.  </li>
+                <li> DELETE: Elimina algún dato  </li>
+            </list>
+    
+            <p class="pregunta"> 4. ¿Qué método HTTP se debe utilizar al enviar un formulario HTML, por ejemplo cuando ingresas tu usuario 
+                y contraseña en algún sitio? ¿Por qué? </p>
+            <p class="respuesta"> El método POST, pues queremos que los datos ingresados lleguen al servidor. </p>
+    
+            <p class="pregunta"> 5. ¿Qué método HTTP se utiliza cuando a través de un navegador web se accede a una página a través de un URL? </p>
+            <p class="respuesta"> Se utiliza el método get, pues solicita la información de la página. </p>
+    
+            <p class="pregunta"> 6. Un servidor web devuelve una respuesta HTTP con código 200. ¿Qué significa esto? ¿Ocurrió algún error? </p>
+            <p class="respuesta"> No ocurrió error. Significa que la solicitud ha sido exitosa. </p>
+    
+            <p class="pregunta"> 7. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder 
+                al sitio y se encontró con un error 404? ¿Por qué? </p>
+            <p class="respuesta"> Sí es responsabilidad del desarrollador, pues significa que el servidor no encontró el recurso
+            
+            <p  class="pregunta"> 8. ¿Es responsabilidad del desarrollador corregir un sitio web si un usuario reporta que intentó acceder al sitio 
+                y se encontró con un error 500? ¿Por qué? </p>
+            <p class="respuesta"> Sí es su responsabilidad, pues significa que existe un error interno. </p>
+            
+            <p class="pregunta"> 9. ¿Qué significa que un atributo HTML5 esté depreciado o desaprobado (deprecated)? Menciona algunos elementos de 
+                HTML 4 que en HTML5 estén desaprobados.</p>
+            <p class="respuesta"> Significa que ya no se utiliza, mas sigue funcionando en páginas que cuentan con él. Algunos son: </p>
+            <list>  
+                <li> 'big': utilizado para hacer más grande el texto </li>
+                <li> 'center': para centrar texto </li>
+                <li> 'frameset': para dividir la ventana en distintas secciones </li>
+            </list>
+    
+            <p class="pregunta"> 10. ¿Cuáles son las diferencias principales entre HTML 4 y HTML5? </p>
+            <p class="respuesta"> HTML 5 es una mejora de algunos aspectos de HTML 4. </p>
+    
+            <p class="pregunta"> 11. ¿Qué componentes de estructura y estilo tiene una tabla? </p>
+            Estructura:
+                <list>
+                    <li> table: crea la tabla </li>
+                    <li> tr: fila de la tabla </li>
+                    <li> td: información de la celda</li>
+                </list>
+            Estilo: 
+                <list>
+                    <li> border: para el borde de la tabla </li>
+                    <li> width: para el ancho de la tabla </li>
+                    <li> height: para el alto de la tabla </li>
+                 </list>
+    
+            <p class="pregunta"> 12. ¿Cuáles son los principales controles de una forma (formulario) HTML5? </p>
+            <list>
+                <li> input: para ingresar texto </li>
+                <li> textarea: para ingresar texto más largo </li>
+                <li> select: para seleccionar una opción de un menú </li>
+                <li> button: para enviar el formulario </li>
+            </list>
+    
+            <p class="pregunta"> 13. ¿Qué tanto soporte HTML5 tiene el navegador que utilizas? </p>
+            <p class="respuesta"> Google Chrome tiene un gran soporte de HTML5 </p>
+    
+            <p class="pregunta"> 14. ¿Cuál es el ciclo de vida de los sistemas de información? </p>
+            <p class="respuesta"> Abarca a identificación de una necesidad, planificación e ideas, desarrollo y mantenimiento.
+                Termina cuando el programa es obsoleto o es reutilizado para generar uno nuevo. </p>
+    
+            <p class="pregunta"> 15. ¿Cuál es el ciclo de desarrollo de sistemas de información? </p>
+            <p class="respuesta"> Abarca sólo las etapas de creación (desarrollo) y mantenimiento del programa. </p>
+    
+            <h3> <br> Laboratorio #2: Git </h3>
+            <p class="respuesta"> Estos archivos fueron agregados al repositorio de Github con apoyo de la herramienta Git.  </p>
+    
+            <h3> <br> Preguntas de Laboratorio #3: CSS </h3>
+            <P class="pregunta"> 1. Como ingeniero de software, ¿cuál es tu recomendación sobre el uso de !important en un CSS?  </p>
+            <p class="respuesta"> !important establece prioridad sobre otros estilos establecidos. Recomendaría ser cuidadosos con su 
+                uso, teninendo en cuenta su impacto en el código y manteniendo un orden en la jerarquía de estilos. </p>
+    
+            <p class="pregunta"> 2. Si se pone una imagen de fondo en una página HTML, ¿por qué debe escogerse con cuidado? </p>
+            <p class="respuesta"> Porque puede dificultar la lectura del texto y, por ende, interferir en la experiencia del usuario.
+                Además, debe asegurarse de que el tamaño de la imagen sea compatible con el de la pantalla. </p>
+    
+            <p class="pregunta"> 3. Como ingeniero de software, ¿cuál es tu recomendación al elegir las unidades de un propiedad de 
+                estilo entre %, px y pt? </p>
+            <list>
+                <li> %: relativo al tamaño del contenedor </li>
+                <li> px: son pixeles, así que es una medida fija </li>
+                <li> pt: relativo al tamaño de la pantalla </li>
+            </list>
+            <p class="respuesta"> Recomendaría utilizar % por ser una medida relativa ajustable a cualquier pantalla. 'px' y 'pt' son
+                medidas absolutas y, por ello, deben ajustarse a un espacio específico. </p>
+            
+            <p class="pregunta"> 4. ¿Por qué el uso de una versión minimizada del CSS mejora el rendimiento del sitio? </p>
+            <p class="respuesta"> Porque reduce el tamaño del archivo al eliminar los identados y espacios. 
+                Esto disminuye el tiempo de carga del archivo. </p>
+    
+        </body>
+        <footer>
+            <p> <br> Visual studio code </p>
+            <a> https://code.visualstudio.com/ </a>
+        </footer>
+    </html>`);
 
-app.use( (request, response, next) => {
-    response.status(404);
-    let html = html_header;
-    html += html_footer;
-    response.send(html);
-});
-
-app.listen(3000);
+    response.end();                                         // return  --> se detiene la carga de la página
+}).listen(3000);
+// Lo mismo que --> server.listen(3000);  
