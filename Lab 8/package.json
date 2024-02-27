@@ -1,0 +1,25 @@
+{
+  "name": "lab-8",
+  "version": "1.0.0",
+  "description": "Laboratorio11",
+  "main": "lab8.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndreaMedinaRico/TCB2005B.git"
+  },
+  "keywords": [
+    "ITC"
+  ],
+  "author": "Andrea Medina Rico",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndreaMedinaRico/TCB2005B/issues"
+  },
+  "homepage": "https://github.com/AndreaMedinaRico/TCB2005B#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
