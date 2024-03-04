@@ -1,0 +1,13 @@
+body {
+    background-color: #033a26;
+    color: #f2f2f2;
+    font-family: system-ui;
+}
+
+.centrado {
+    text-align: center;
+}
+
+input {
+    border-radius: 10px;
+}
