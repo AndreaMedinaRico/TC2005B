@@ -5,29 +5,91 @@ const html_header = `
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Clash of clans</title>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+        <title> Lab 10 </title>
+        <style> 
+            body {
+                background-color: #033a26; color: #f2f2f2; font-family: system-ui;
+            }
+            .centrado { 
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <p> ¡Hola mundo jiji ! </p>
+        <h1 class="centrado"> Bungou Stray Dogs </h1>
+        <p class="centrado"> Información actualizada del anime </p> <br>
 `;
 
 const html_footer = `
-    </div>
-    </section>
-    <footer class="footer">
-        <div class="content has-text-centered">
-          <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-            <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-            is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-          </p>
-        </div>
-    </footer>
-  </body>
+        <footer>
+            <p class="centrado"> ¡ Gracias por visitar esta página ! </p>
+            <p class="centrado"> Vuelve pronto </p>
+        </footer>
+    </body>
 </html>
 `;
+
+router.get('/info', (request, response, next) => {
+    let html = html_header;
+    html += `
+            <br> <h2> Resumen del anime: </h2> <br>
+            <p> 
+                Bungou Stray Dogs es un anime que sigue la historia de Atsushi Nakajima, un huérfano que 
+                es expulsado de su orfanato y se encuentra con un hombre que intenta suicidarse. Este hombre 
+                es Osamu Dazai, un detective con habilidades sobrenaturales que forma parte de la Agencia de 
+                Detectives Armados. Atsushi se une a la agencia y comienza a trabajar con ellos para resolver 
+                casos que involucran a otros usuarios de habilidades sobrenaturales.
+            </p>
+    `;
+    html += html_footer;
+    response.send(html);
+});
+
+router.get('/personajes', (request, response, next) => {
+    let html = html_header;
+    html += `
+            <br> <h2> Personajes principales: </h2> <br>
+            <ul>
+                <li> Atsushi Nakajima </li>
+                <li> Osamu Dazai </li>
+                <li> Doppo Kunikida </li>
+                <li> Ranpo Edogawa </li>
+                <li> Junichirou Tanizaki </li>
+                <li> Kenji Miyazawa </li>
+                <li> Akiko Yosano </li>
+                <li> Yukichi Fukuzawa </li>
+    `;
+    html += html_footer;
+    response.send(html);
+});
+
+router.get('/personal', (request, response, next) => {
+    let html = html_header;
+    html += `
+            <form method="POST">
+                <label for="nombre"> Nombre: </label>
+                <input type="text" id="nombre" name="nombre" required> <br>
+
+                <label> Personaje favorito: </label>
+                <input type="text" id="personaje" name="personaje"> <br>
+
+                <input type="submit" value="Enviar">
+            </form> <br>
+    `;
+    html += html_footer;
+    response.send(html);
+});
+
+router.post('/personal', (request, response, next) => {
+
+});
+
+router.use((request, response, next) => {
+    response.status(404);
+    let html = html_header;
+    html += '<h2 class="centrado"> Error 404: Página no encontrada ): </h2>';
+    html += html_footer;
+    response.send(html);
+});
 
 module.exports = router;
