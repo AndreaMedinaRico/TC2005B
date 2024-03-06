@@ -18,9 +18,18 @@ const html_header = `
             .centrado { 
                 text-align: center;
             }
+            navbar {
+                background-color: #0f5132; padding: 10px; text-align: center;
+            }
         </style>
     </head>
     <body>
+        <navbar>
+            <a href="/"> Inicio </a> |
+            <a href="/info"> Información </a> |
+            <a href="/personajes"> Personajes </a> |
+            <a href="/personal"> Cuéntanos sobre ti </a>
+        </navbar> <br>
         <h1 class="centrado"> Bungou Stray Dogs </h1>
         <p class="centrado"> Información actualizada del anime </p> <br>
 `;

@@ -29,6 +29,18 @@ const html_footer = `
 </html>
 `;
 
+router.get('/', (request, response, next) => {
+    let html = html_header;
+    html += `
+            <br> <h2> Rutas a las que puedes acceder: </h2> <br>
+            <ul> 
+                <li> /info: Información sobre el anime </li>
+                <li> /personajes: Personajes principales </li>
+                <li> /personal: Cuéntanos sobre ti </li>
+            </ul> <br>
+    `;
+});
+
 router.get('/info', (request, response, next) => {
     let html = html_header;
     html += `
@@ -40,24 +52,6 @@ router.get('/info', (request, response, next) => {
                 Detectives Armados. Atsushi se une a la agencia y comienza a trabajar con ellos para resolver 
                 casos que involucran a otros usuarios de habilidades sobrenaturales.
             </p>
-    `;
-    html += html_footer;
-    response.send(html);
-});
-
-router.get('/personajes', (request, response, next) => {
-    let html = html_header;
-    html += `
-            <br> <h2> Personajes principales: </h2> <br>
-            <ul>
-                <li> Atsushi Nakajima </li>
-                <li> Osamu Dazai </li>
-                <li> Doppo Kunikida </li>
-                <li> Ranpo Edogawa </li>
-                <li> Junichirou Tanizaki </li>
-                <li> Kenji Miyazawa </li>
-                <li> Akiko Yosano </li>
-                <li> Yukichi Fukuzawa </li>
     `;
     html += html_footer;
     response.send(html);
@@ -81,7 +75,9 @@ router.get('/personal', (request, response, next) => {
 });
 
 router.post('/personal', (request, response, next) => {
-
+    console.log(request.body);
+    filesystem.writeFileSync('personal.txt', 'Nombre: ' + request.body.nombre + ', Personaje favorito: ' + request.body.personaje + '\n', {flag: 'a'});
+    response.redirect('/');
 });
 
 router.use((request, response, next) => {

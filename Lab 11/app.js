@@ -14,23 +14,9 @@ app.use((request, response, next) => {
 });
 
 const rutasClases = require('./routes/clases.routes');
+const rutasClasesPersonajes = require('./routes/clases2.routes.js');
 
+app.use('/personajes', rutasClasesPersonajes);
 app.use('/', rutasClases);
+
 app.listen(3000);
-
-/*
-app.use((request, response, next) => {
-    console.log('Otro middleware!');
-    response.send('¡Hola mundo!');      // Manda la respuesta
-
-    // response.statusCode = 404;       VARIABLE
-    // respone.status(404).send('404'); FUNCIÓN
-});
-
-app.use( (request, response, next) => {
-    response.status(404);
-    let html = html_header;
-    html += html_footer;
-    response.send(html);
-});
-*/
