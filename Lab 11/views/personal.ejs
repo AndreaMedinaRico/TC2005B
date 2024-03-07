@@ -1,18 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title> Lab 10 </title>
-        <style> 
-            body {
-                background-color: #033a26; color: #f2f2f2; font-family: system-ui;
-            }
-            .centrado { 
-                text-align: center;
-            }
-        </style>
-    </head>
-    <body>
-        <h1 class="centrado"> Bungou Stray Dogs </h1>
+<%- include('includes/head.ejs') %>
         <p class="centrado"> Información actualizada del anime </p> <br>
 
         <form method="POST">
@@ -24,10 +10,4 @@
 
             <input type="submit" value="Enviar">
         </form> <br>
-
-        <footer>
-            <p class="centrado"> ¡ Gracias por visitar esta página ! </p>
-            <p class="centrado"> Vuelve pronto </p>
-        </footer>
-    </body>
-</html>
+<%- include('includes/foot.ejs') %>

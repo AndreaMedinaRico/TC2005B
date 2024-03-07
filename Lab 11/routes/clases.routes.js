@@ -76,10 +76,7 @@ router.post('/personal', (request, response, next) => {
 
 router.use((request, response, next) => {
     response.status(404);
-    let html = html_header;
-    html += '<h2 class="centrado"> Error 404: Página no encontrada ): </h2>';
-    html += html_footer;
-    response.send(html);
+    response.render('404')
 });
 
 module.exports = router;
