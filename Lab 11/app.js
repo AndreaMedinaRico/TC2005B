@@ -23,8 +23,10 @@ app.use((request, response, next) => {
 
 const rutasClases = require('./routes/clases.routes');
 const rutasClasesPersonajes = require('./routes/clases2.routes.js');
+const rutasPersonal = require('./routes/personal.routes.js');
 
 app.use('/personajes', rutasClasesPersonajes);
+app.use('/personal', rutasPersonal);
 app.use('/', rutasClases);
 
 app.listen(3000);
