@@ -60,20 +60,7 @@ router.get('/info', (request, response, next) => {
 });
 
 router.get('/personal', (request, response, next) => {
-    let html = html_header;
-    html += `
-            <form method="POST">
-                <label for="nombre"> Nombre: </label>
-                <input type="text" id="nombre" name="nombre" required> <br>
-
-                <label> Personaje favorito: </label>
-                <input type="text" id="personaje" name="personaje"> <br>
-
-                <input type="submit" value="Enviar">
-            </form> <br>
-    `;
-    html += html_footer;
-    response.send(html);
+    response.render('personal');
 });
 
 router.post('/personal', (request, response, next) => {

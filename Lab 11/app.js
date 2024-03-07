@@ -7,6 +7,9 @@ const path = require('path');
     // __dirname --> variable de RUTA del directorio
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.set('view engine', 'ejs');      // EJS como motor de vistas
+app.set('views', 'views');          // Carpeta de vistas
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 
