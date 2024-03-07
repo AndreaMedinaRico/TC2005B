@@ -39,6 +39,8 @@ router.get('/', (request, response, next) => {
                 <li> /personal: Cuéntanos sobre ti </li>
             </ul> <br>
     `;
+    html += html_footer;
+    response.send(html);
 });
 
 router.get('/info', (request, response, next) => {
@@ -75,9 +77,14 @@ router.get('/personal', (request, response, next) => {
 });
 
 router.post('/personal', (request, response, next) => {
+    let html = html_header;
     console.log(request.body);
     filesystem.writeFileSync('personal.txt', 'Nombre: ' + request.body.nombre + ', Personaje favorito: ' + request.body.personaje + '\n', {flag: 'a'});
-    response.redirect('/');
+    html += `
+            <br> <h2> Gracias por compartir tu información </h2> <br>
+    `;
+    html += html_footer;
+    response.send(html);
 });
 
 router.use((request, response, next) => {
