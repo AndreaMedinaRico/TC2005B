@@ -3,7 +3,7 @@ exports.getPersonajes = (request, response, next) => {
 }
 
 exports.getSecundarios = (request, response, next) => {
-    response.render('secundarios');
+    response.render('secundarios.ejs');
 }
 
 exports.get404 = (request, response, next) => {

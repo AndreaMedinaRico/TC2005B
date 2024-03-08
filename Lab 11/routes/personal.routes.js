@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-const filesystem = require('fs');
-
 const personalController = require('../controllers/personal.controller.js');
 
 router.get('/', personalController.getPersonal);
