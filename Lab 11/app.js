@@ -21,8 +21,8 @@ app.use((request, response, next) => {
     next();                             // Le permite a la petición avanzar hacia el siguiente middleware
 });
 
-const rutasClases = require('./routes/clases.routes');
-const rutasClasesPersonajes = require('./routes/clases2.routes.js');
+const rutasClases = require('./routes/home.routes.js');
+const rutasClasesPersonajes = require('./routes/personajes.routes.js');
 const rutasPersonal = require('./routes/personal.routes.js');
 
 app.use('/personajes', rutasClasesPersonajes);
