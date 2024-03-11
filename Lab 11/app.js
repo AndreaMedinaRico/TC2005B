@@ -37,7 +37,7 @@ const rutasUsuarios = require('./routes/users.routes.js')
 
 app.use('/personajes', rutasClasesPersonajes);
 app.use('/personal', rutasPersonal);
-app.use('/usuarios', rutasUsuarios);
+app.use('/users', rutasUsuarios);
 app.use('/', rutasClases);
 
 app.listen(3000);
