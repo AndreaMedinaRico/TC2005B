@@ -19,7 +19,7 @@ exports.postPersonal = (request, response, next) => {
 
     response.render('personalPost', {
         datosPersonales: Personal.fetchAll(),
-        ultima_persona: request.cookies.ultima_persona || ''
+        ultima_persona: request.cookies.ultima_persona || ''        // Usando cookie parser
     });
 }
 
