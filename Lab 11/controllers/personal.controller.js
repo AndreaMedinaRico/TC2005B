@@ -15,8 +15,11 @@ exports.postPersonal = (request, response, next) => {
     );
     mi_personal.save();
 
+    response.setHeader('Set-Cookie', 'ultima_persona=' + request.body.nombre + '; HttpOnly');
+
     response.render('personalPost', {
-        datosPersonales: Personal.fetchAll()
+        datosPersonales: Personal.fetchAll(),
+        ultima_persona: request.cookies.ultima_persona || ''
     });
 }
 

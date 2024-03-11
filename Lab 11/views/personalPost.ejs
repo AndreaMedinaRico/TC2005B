@@ -7,4 +7,8 @@
                 <p> Personaje favorito: <%= persona.personaje %> </p> <br>
             <% } %>
 
+            <% if (ultima_tropa != '') { 
+                <p> La última persona registrada fue: <%= ultima_tropa %> </p>
+            <% } %>
+
 <%- include('includes/foot.ejs') %>
