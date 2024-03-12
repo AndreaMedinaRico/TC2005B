@@ -21,7 +21,6 @@ exports.postPersonal = (request, response, next) => {
     }).catch((error) => {
         console.log(error);
     });
-
     
     Personal.fetch(request.params.idPersona)
     .then(([rows, fieldData]) => {
@@ -31,7 +30,6 @@ exports.postPersonal = (request, response, next) => {
             ultima_persona: request.cookies.ultima_persona || '',        // Usando cookie parser
             username: request.session.username || '',
         });
-    
     })
     .catch((error) => {
         console.log(error);

@@ -1,5 +1,6 @@
 // Destructuring --> extrae propiedad RESPONSE del objeto EXPRESS
 const { response } = require("express");
+const Usuario = require('../models/usuario.model');
 
 exports.getLogin = (request, response, next) => {
     response.render('login', {
@@ -9,8 +10,17 @@ exports.getLogin = (request, response, next) => {
 }
 
 exports.postLogin = (request, response, next) => {
-    request.session.username = request.body.username;
-    response.redirect('/');
+    Usuario.fetchOne(request.body.username)
+        .then(([usuarios, fieldData]) => {
+            if (usuarios.length == 1) {
+                request.session.username = request.body.username;
+                response.redirect('/tropas');
+            } else {
+                response.redirect('/users/login');
+            }
+        })
+        .catch((error) => {console.log(error);});
+    
 }
 
 exports.getLogout = (request, response, next) => {
@@ -27,5 +37,16 @@ exports.getSignup = (request, response, next) => {
 }
 
 exports .postSignup = (request, response, next) => {
-    response.redirect('/users/login')
+    const nuevo_usuario = new Usuario(
+        request.body.username, 
+        request.body.name, 
+        request.body.password
+    );
+    nuevo_usuario.save()
+        .then(() => {
+            response.redirect('/users/login');
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 }
