@@ -11,7 +11,8 @@ exports.postPersonal = (request, response, next) => {
     const mi_personal = new Personal(
         request.body.nombre,
         request.body.edad,
-        request.body.personaje
+        request.body.personaje,
+        request.body.imagen
     );
     mi_personal.save();
 

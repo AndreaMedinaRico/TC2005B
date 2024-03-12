@@ -4,7 +4,8 @@
             <% for (let persona of datosPersonales) { %>
                 <p> Nombre: <%= persona.nombre %> </p>
                 <p> Edad: <%= persona.edad %> </p>
-                <p> Personaje favorito: <%= persona.personaje %> </p> <br>
+                <p> Personaje favorito: <%= persona.personaje %> </p> 
+                <img src="<%= persona.imagen %>" alt="Imagen de <%= persona.personaje %>"> <br> <br>
             <% } %>
 
             <% if (ultima_persona != '') {  %>
