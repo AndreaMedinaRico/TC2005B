@@ -14,7 +14,7 @@ exports.postLogin = (request, response, next) => {
         .then(([usuarios, fieldData]) => {
             if (usuarios.length == 1) {
                 request.session.username = request.body.username;
-                response.redirect('/tropas');
+                response.redirect('/');
             } else {
                 response.redirect('/users/login');
             }
@@ -30,7 +30,7 @@ exports.getLogout = (request, response, next) => {
 }
 
 exports.getSignup = (request, response, next) => {
-    response.render('login', {
+    response.render('signup', {
         username: request.session.username || '',
         registro: true,             // Se muestra el formulario de REGISTRO 
     });

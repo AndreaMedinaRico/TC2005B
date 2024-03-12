@@ -1,9 +1,13 @@
 <%- include('includes/head.ejs') %>
             
             <h2 class="title">
-                Bienvenido
+                    Únete a nuestra página
             </h2>
-            <form action="/users/login" method="POST">
+            <form action="/users/signup" method="POST">
+
+                <label class="label" for="name"> Nombre completo: </label>
+                <input class="input text" id="name" name="name"> <br>
+
                 <label class="label" for="username"> Nombre de usuario: </label>
                 <input class="input text" id="username" name="username"> <br>
 
