@@ -23,7 +23,7 @@ exports.postPersonal = (request, response, next) => {
     });
 
     
-    Personal.fetchAll()
+    Personal.fetch(request.params.idPersona)
     .then(([rows, fieldData]) => {
         console.log("rows");
         response.render('personalPost', {

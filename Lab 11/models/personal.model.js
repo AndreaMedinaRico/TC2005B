@@ -21,4 +21,15 @@ module.exports = class Personal {
     static  fetchAll() {
         return db.execute('SELECT * FROM persona');
     }
+
+    static fetch(idPersona) {
+        if (idPersona) 
+            return this.fetchOne(idPersona);
+        else
+            return this.fetchAll();
+    }
+
+    static fetchOne(idPersona) {
+        return db.execute('SELECT * FROM persona WHERE idPersona = ?', [idPersona]);
+    }
 }
