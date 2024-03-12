@@ -8,8 +8,6 @@ exports.getPersonal = (request, response, next) => {
 }
 
 exports.postPersonal = (request, response, next) => {
-    filesystem.writeFileSync('personal.txt', 'Nombre: ' + request.body.nombre + ', Personaje favorito: ' + request.body.personaje + '\n', {flag: 'a'});
-    
     const mi_personal = new Personal(
         request.body.nombre,
         request.body.edad,
@@ -22,7 +20,7 @@ exports.postPersonal = (request, response, next) => {
     response.render('personalPost', {
         username: request.session.username || '',
         datosPersonales: Personal.fetchAll(),
-        ultima_persona: request.cookies.ultima_persona || ''      // Usando cookie parser
+        ultima_persona: request.cookies.ultima_persona || '',  // Usando cookie parser
     });
 }
 
