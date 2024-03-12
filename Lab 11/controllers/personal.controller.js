@@ -8,8 +8,6 @@ exports.getPersonal = (request, response, next) => {
 }
 
 exports.postPersonal = (request, response, next) => {
-    filesystem.writeFileSync('personal.txt', 'Nombre: ' + request.body.nombre + ', Personaje favorito: ' + request.body.personaje + '\n', {flag: 'a'});
-    
     const mi_personal = new Personal(
         request.body.nombre,
         request.body.edad,
