@@ -14,14 +14,27 @@ exports.postPersonal = (request, response, next) => {
         request.body.personaje,
         request.body.imagen
     );
-    mi_personal.save();
+    mi_personal.save()
+    .then(([rows, fieldData]) => {
+        response.setHeader('Set-Cookie', 'ultima_persona=' + request.body.nombre + '; HttpOnly');
 
-    response.setHeader('Set-Cookie', 'ultima_persona=' + request.body.nombre + '; HttpOnly');
+    }).catch((error) => {
+        console.log(error);
+    });
 
-    response.render('personalPost', {
-        username: request.session.username || '',
-        datosPersonales: Personal.fetchAll(),
-        ultima_persona: request.cookies.ultima_persona || '',        // Usando cookie parser
+    
+    Personal.fetchAll()
+    .then(([rows, fieldData]) => {
+        console.log("rows");
+        response.render('personalPost', {
+            datosPersonales: rows,
+            ultima_persona: request.cookies.ultima_persona || '',        // Usando cookie parser
+            username: request.session.username || '',
+        });
+    
+    })
+    .catch((error) => {
+        console.log(error);
     });
 }
 
