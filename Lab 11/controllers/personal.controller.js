@@ -22,7 +22,7 @@ exports.postPersonal = (request, response, next) => {
     response.render('personalPost', {
         username: request.session.username || '',
         datosPersonales: Personal.fetchAll(),
-        ultima_persona: request.cookies.ultima_persona || ''        // Usando cookie parser
+        ultima_persona: request.cookies.ultima_persona || ''      // Usando cookie parser
     });
 }
 
