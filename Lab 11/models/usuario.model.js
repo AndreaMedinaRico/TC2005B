@@ -13,14 +13,14 @@ module.exports = class Usuario {
     save() {
         // Promesa
         return bcrypt.hash(this.password, 12)       // Encriptar 12 veces
-        .then((passwordCifrado) => {
-            `INSERT INTO usuario (username, nombre, password) 
-            VALUES (?, ?, ?)`, 
-            [this.username, this.nombre, passwordCifrado]
-        })
-        .catch((error) => {
-            console.log(error);
-        });
+            .then((passwordCifrado) => {
+                `INSERT INTO usuario (username, nombre, password) 
+                VALUES (?, ?, ?)`, 
+                [this.username, this.nombre, passwordCifrado]
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
     
     static fetchOne(username) {

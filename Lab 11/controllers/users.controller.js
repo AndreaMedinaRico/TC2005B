@@ -1,6 +1,5 @@
-// Destructuring --> extrae propiedad RESPONSE del objeto EXPRESS
-const { response } = require("express");
 const Usuario = require('../models/usuario.model');
+const bcrypt = require('bcryptjs');
 
 exports.getLogin = (request, response, next) => {
     response.render('login', {
@@ -12,9 +11,26 @@ exports.getLogin = (request, response, next) => {
 exports.postLogin = (request, response, next) => {
     Usuario.fetchOne(request.body.username)
         .then(([usuarios, fieldData]) => {
-            if (usuarios.length == 1) {
-                request.session.username = request.body.username;
-                response.redirect('/');
+
+            if (usuarios.length == 1) {                     // Si el usuario EXISTE
+                const usuario = usuarios[0];                // usuario del arreglo de la bd
+                bcrypt.compare(request.body.password, usuario.password)
+                    .then((doMatch) => {
+
+                        if(doMatch) {                       // Si las contraseñas coinciden
+                            request.session.username = request.body.username;
+                            request.session.isLoggedIn = true;  // Usuario autenticado
+                            response.redirect('/');
+                        } else {
+                            response.redirect('/users/login');  // De vuelta a iniciar sesión
+                        }
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        response.redirect('/users/login');      // De veulta a iniciar sesión
+                    });
+
             } else {
                 response.redirect('/users/login');
             }
