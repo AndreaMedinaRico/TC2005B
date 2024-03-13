@@ -2,12 +2,17 @@ const Usuario = require('../models/usuario.model');
 const bcrypt = require('bcryptjs');
 
 exports.getLogin = (request, response, next) => {
+
+    const error = request.session.error || '';      // ERROR DE SESIÓN o vacío
+    request.session.error = '';                     // Limpia ERROR después de mostrarlo
+
     response.render('login', {
         username: request.session.username || '',
         registro: false,                            // No se muestra el formulario de REGISTRO, solo inicio de sesión
             // Token asignado a csrfToken
         csrfToken: request.csrfToken(),             // Obtiene TOKEN CSRF asociado a la SESIÓN de usuario
             // A utilizarse en el FORMULARIO de inicio de sesión
+        error: error,
     });
 }
 
@@ -25,6 +30,7 @@ exports.postLogin = (request, response, next) => {
                             request.session.isLoggedIn = true;  // Usuario autenticado
                             response.redirect('/');
                         } else {
+                            request.session.error = 'Usuario o contraseña incorrectos';
                             response.redirect('/users/login');  // De vuelta a iniciar sesión
                         }
 
@@ -35,6 +41,7 @@ exports.postLogin = (request, response, next) => {
                     });
 
             } else {
+                request.session.error = 'Usuario o contraseña incorrectos';  // ERROR de inicio de sesión
                 response.redirect('/users/login');
             }
         })

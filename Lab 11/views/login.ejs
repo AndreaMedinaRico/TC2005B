@@ -3,6 +3,11 @@
             <h2 class="title">
                 Bienvenido
             </h2>
+
+            <% if (error != '') { %>
+                <strong> <%= error %> </strong>
+            <% } %>
+
             <form action="/users/login" method="POST">
 
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>">
