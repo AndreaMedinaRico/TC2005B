@@ -33,6 +33,11 @@ app.use((request, response, next) => {
 const cookieParser = require('cookie-parser');
 app.use(cookieParser());
 
+// Protección CSRF --> Cross Site Request Forgery
+const csrf = require('csurf');
+const csrfProtection = csrf();          // Llama a función --> devuelve MIDDLEWARE --> protege rutas
+app.use(csrfProtection);                // USA middleware
+
 const rutasClases = require('./routes/home.routes.js');
 const rutasClasesPersonajes = require('./routes/personajes.routes.js');
 const rutasPersonal = require('./routes/personal.routes.js');

@@ -5,6 +5,8 @@
             </h2>
             <form action="/users/signup" method="POST">
 
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
                 <label class="label" for="name"> Nombre completo: </label>
                 <input class="input text" id="name" name="name"> <br>
 

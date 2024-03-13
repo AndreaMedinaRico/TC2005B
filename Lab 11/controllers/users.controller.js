@@ -4,7 +4,10 @@ const bcrypt = require('bcryptjs');
 exports.getLogin = (request, response, next) => {
     response.render('login', {
         username: request.session.username || '',
-        registro: false,            // No se muestra el formulario de REGISTRO, solo inicio de sesión
+        registro: false,                            // No se muestra el formulario de REGISTRO, solo inicio de sesión
+            // Token asignado a csrfToken
+        csrfToken: request.csrfToken(),             // Obtiene TOKEN CSRF asociado a la SESIÓN de usuario
+            // A utilizarse en el FORMULARIO de inicio de sesión
     });
 }
 
@@ -49,6 +52,7 @@ exports.getSignup = (request, response, next) => {
     response.render('signup', {
         username: request.session.username || '',
         registro: true,             // Se muestra el formulario de REGISTRO 
+        csrfToken: request.csrfToken(),            // Token de sesión de usuario a usarse en formulario
     });
 }
 

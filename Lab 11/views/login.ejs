@@ -4,6 +4,9 @@
                 Bienvenido
             </h2>
             <form action="/users/login" method="POST">
+
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+
                 <label class="label" for="username"> Nombre de usuario: </label>
                 <input class="input text" id="username" name="username"> <br>
 
