@@ -13,6 +13,7 @@ exports.getLogin = (request, response, next) => {
         csrfToken: request.csrfToken(),             // Obtiene TOKEN CSRF asociado a la SESIÓN de usuario
             // A utilizarse en el FORMULARIO de inicio de sesión
         error: error,
+        privilegios: request.session.privilegios || [],   // Permisos
     });
 }
 
@@ -26,9 +27,16 @@ exports.postLogin = (request, response, next) => {
                     .then((doMatch) => {
 
                         if(doMatch) {                       // Si las contraseñas coinciden
-                            request.session.username = request.body.username;
-                            request.session.isLoggedIn = true;  // Usuario autenticado
-                            response.redirect('/');
+                            Usuario.getPrivilegios(usuario.username)
+                                .then(() => {
+                                    request.session.privilegios = usuario.privilegios;      
+                                    request.session.username = usuario.username;
+                                    request.session.isLoggedIn = true;  // Usuario autenticado
+                                    response.redirect('/');
+                                })
+                                .catch((error) => {
+                                    console.log(error);
+                                });
                         } else {
                             request.session.error = 'Usuario o contraseña incorrectos';
                             response.redirect('/users/login');  // De vuelta a iniciar sesión
@@ -58,6 +66,7 @@ exports.getLogout = (request, response, next) => {
 exports.getSignup = (request, response, next) => {
     response.render('signup', {
         username: request.session.username || '',
+        permisos: request.session.permisos || [],
         registro: true,             // Se muestra el formulario de REGISTRO 
         csrfToken: request.csrfToken(),            // Token de sesión de usuario a usarse en formulario
     });
