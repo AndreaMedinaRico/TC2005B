@@ -3,7 +3,8 @@ const Personal = require('../models/personal.model');
 
 exports.getPersonal = (request, response, next) => {
     response.render('personal', {
-        username: request.session.username || ''
+        username: request.session.username || '',
+        privilegios: request.session.privilegios || [],
     });
 }
 

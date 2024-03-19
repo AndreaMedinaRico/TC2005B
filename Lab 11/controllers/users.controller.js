@@ -66,7 +66,7 @@ exports.getLogout = (request, response, next) => {
 exports.getSignup = (request, response, next) => {
     response.render('signup', {
         username: request.session.username || '',
-        permisos: request.session.permisos || [],
+        privilegios: request.session.privilegios || [],
         registro: true,             // Se muestra el formulario de REGISTRO 
         csrfToken: request.csrfToken(),            // Token de sesión de usuario a usarse en formulario
     });

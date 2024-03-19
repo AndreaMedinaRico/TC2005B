@@ -5,7 +5,10 @@
         <%- include('style.ejs') %>
     </head>
     <body>
-        <%- include('navbar.ejs', {username: username}) %>
+        <%- include('navbar.ejs', {
+            username: username,
+            privilegios: privilegios
+        }) %>
 
         <h1 class="centrado"> Bungou Stray Dogs </h1>
         <p class="centrado"> Información actualizada del anime </p> <br>

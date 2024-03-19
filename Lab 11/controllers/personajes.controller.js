@@ -1,12 +1,14 @@
 exports.getPersonajes = (request, response, next) => {
     response.render('personajes.ejs', {
-        username: request.session.username || ''
+        username: request.session.username || '',
+        privilegios: request.session.privilegios || [],
     });
 };
 
 exports.getSecundarios = (request, response, next) => {
     response.render('secundarios.ejs', {
-        username: request.session.username || ''
+        username: request.session.username || '',
+        privilegios: request.session.privilegios || [],
     });
 };
 

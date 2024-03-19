@@ -1,12 +1,14 @@
 exports.getHome = (request, response, next) => {
     response.render('home',{
-        username: request.session.username || ''
+        username: request.session.username || '',
+        privilegios: request.session.privilegios || [],
     });
 }
 
 exports.getInfo = (request, response, next) => {
     response.render('info', {
-        username: request.session.username || ''
+        username: request.session.username || '',
+        privilegios: request.session.privilegios || [],
     });
 }
 
