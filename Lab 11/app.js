@@ -19,6 +19,13 @@ app.use(session({
     saveUninitialized: false,       //Asegura que no se guarde una sesión para una petición que no lo necesita
 }));
 
+app.use((request, response, next) => {
+    if (!request.session.privilegios) {
+        request.session.privilegios = [];
+    }
+    next();
+});
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended: false}));
 

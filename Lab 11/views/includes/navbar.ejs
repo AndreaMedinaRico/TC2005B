@@ -3,7 +3,11 @@
             <a href="/info"> Información </a>
             <a href="/personajes"> Personajes principales </a>
             <a href="/personajes/secundarios"> Personajes secundarios </a>
-            <a href="/personal"> Información personal </a>
+            <% for (privilegio of privilegios) {            %>
+                <% if (privilegio == 'subir_info_personal') {  %>
+                    <a href="/personal"> Información personal </a>
+                <% } %>
+            <% } %>
 
             <% if (username == '') { %>
                 <a href="/users/login"> Iniciar sesión </a>
