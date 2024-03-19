@@ -64,6 +64,9 @@ exports.getLogout = (request, response, next) => {
 }
 
 exports.getSignup = (request, response, next) => {
+    const error = request.session.error || '';      // ERROR DE SESIÓN o vacío
+    request.session.error = '';                     // Limpia ERROR después de mostrarlo
+
     response.render('signup', {
         username: request.session.username || '',
         privilegios: request.session.privilegios || [],
@@ -84,5 +87,7 @@ exports .postSignup = (request, response, next) => {
         })
         .catch((error) => {
             console.log(error);
+            request.session.error = 'Nombre de usuario no disponible';
+            response.redirect('/users/signup');
         });
 }
